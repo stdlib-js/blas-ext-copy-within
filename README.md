@@ -35,38 +35,32 @@ limitations under the License.
 
 > Perform an in-place copy of elements within an [ndarray][@stdlib/ndarray/ctor] along an [ndarray][@stdlib/ndarray/ctor] dimension.
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/blas-ext-copy-within
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
-
 ```javascript
-copyWithin = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-copy-within@umd/browser.js' )
-```
-
-To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
-
-```javascript
-var copyWithin = require( 'path/to/vendor/umd/blas-ext-copy-within/index.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-copy-within@umd/browser.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.copyWithin;
-})();
-</script>
+var copyWithin = require( '@stdlib/blas-ext-copy-within' );
 ```
 
 #### copyWithin( x, target, start\[, end]\[, options] )
@@ -93,7 +87,7 @@ The function has the following parameters:
 -   **x**: input [ndarray][@stdlib/ndarray/ctor].
 -   **target**: target index. May be either an integer or an [ndarray][@stdlib/ndarray/ctor] having an integer index or "generic" [data type][@stdlib/ndarray/dtypes]. If provided an [ndarray][@stdlib/ndarray/ctor], the value must have a shape which is [broadcast-compatible][@stdlib/ndarray/base/broadcast-shapes] with the complement of the shape defined by `options.dim`. For example, given the input shape `[2, 3, 4]` and `options.dim=0`, an [ndarray][@stdlib/ndarray/ctor] target index must have a shape which is [broadcast-compatible][@stdlib/ndarray/base/broadcast-shapes] with the shape `[3, 4]`.
 -   **start**: source start index (inclusive). May be either an integer or an [ndarray][@stdlib/ndarray/ctor] having an integer index or "generic" [data type][@stdlib/ndarray/dtypes] and following the same broadcasting semantics as the `target` argument.
--   **end**: source end index (exclusive) (_optional_). May be either an integer or an [ndarray][@stdlib/ndarray/ctor] having an integer index or "generic" [data type][@stdlib/ndarray/dtypes] and following the same broadcasting semantics as the `target` argument. By default, the source end index is `N + 1`, where `N` is the number of elements along the dimension specified by `options.dim`.
+-   **end**: source end index (exclusive) (_optional_). May be either an integer or an [ndarray][@stdlib/ndarray/ctor] having an integer index or "generic" [data type][@stdlib/ndarray/dtypes] and following the same broadcasting semantics as the `target` argument. By default, the source end index is `N`, where `N` is the number of elements along the dimension specified by `options.dim`.
 -   **options**: function options (_optional_).
 
 The function accepts the following options:
@@ -144,15 +138,10 @@ var y = copyWithin( x, 1, 0, {
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-discrete-uniform@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-to-array@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-copy-within@umd/browser.js"></script>
-<script type="text/javascript">
-(function () {
+```javascript
+var discreteUniform = require( '@stdlib/random-discrete-uniform' );
+var ndarray2array = require( '@stdlib/ndarray-to-array' );
+var copyWithin = require( '@stdlib/blas-ext-copy-within' );
 
 // Generate an ndarray of random numbers:
 var x = discreteUniform( [ 5, 5 ], 0, 20, {
@@ -167,11 +156,6 @@ copyWithin( x, -2, 0, 2, {
 
 // Print the results:
 console.log( ndarray2array( x ) );
-
-})();
-</script>
-</body>
-</html>
 ```
 
 </section>
@@ -258,11 +242,11 @@ Copyright &copy; 2016-2026. The Stdlib [Authors][stdlib-authors].
 
 [stdlib-license]: https://raw.githubusercontent.com/stdlib-js/blas-ext-copy-within/main/LICENSE
 
-[@stdlib/ndarray/ctor]: https://github.com/stdlib-js/ndarray-ctor/tree/umd
+[@stdlib/ndarray/ctor]: https://github.com/stdlib-js/ndarray-ctor
 
-[@stdlib/ndarray/dtypes]: https://github.com/stdlib-js/ndarray-dtypes/tree/umd
+[@stdlib/ndarray/dtypes]: https://github.com/stdlib-js/ndarray-dtypes
 
-[@stdlib/ndarray/base/broadcast-shapes]: https://github.com/stdlib-js/ndarray-base-broadcast-shapes/tree/umd
+[@stdlib/ndarray/base/broadcast-shapes]: https://github.com/stdlib-js/ndarray-base-broadcast-shapes
 
 </section>
 
